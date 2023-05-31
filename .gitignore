@@ -1,7 +1,6 @@
 .env
 */__pycache__/*
 .idea/*
-!*.iml
 *.bak
 */migrations/*
 db.sqlite3
