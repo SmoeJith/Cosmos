@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Cosmos.urls'
+ROOT_URLCONF = 'cosmos.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Cosmos.wsgi.application'
+WSGI_APPLICATION = 'cosmos.wsgi.application'
 
 
 # Database
