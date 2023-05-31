@@ -19,9 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in producti1   22-----------------------------------------
-# \
-# on secret!
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -54,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Cosmos.urls'
+ROOT_URLCONF = 'cosmos.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Cosmos.wsgi.application'
+WSGI_APPLICATION = 'cosmos.wsgi.application'
 
 
 # Database
