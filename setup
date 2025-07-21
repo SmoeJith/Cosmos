@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This script ensures that the repository is ready to be run.
 
 # Create a Python virtual environment and activate it
@@ -33,4 +35,5 @@ python3 "./manage.py" migrate;
 
 # Deactivate the python virtual environment
 deactivate;
-return 0;
+
+exit 0;

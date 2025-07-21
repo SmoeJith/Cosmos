@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# This function prints a help message.
+printhelp() {
+	echo "DESCRIPTION: This script conveniently runs Cosmos.";
+	echo;
+	echo "SYNTAX: $0 [-h|m]";
+	echo "OPTIONS:";
+	echo "h		Print this help message.";
+	echo "m		Make and apply database schema migrations before the server is started.";
+	echo;
+};
+
+# CLI FLAGS
+DOMIGRATIONS=false; # Determines whether migrations are made and applied before starting the server
+
+# Process CLI options
+OPTIND=1;
+while getopts ":hm" option; do
+	case $option in
+		h) # Show help
+			printhelp
+			exit;;
+		m) # Make migrations and migrate before running
+			DOMIGRATIONS=true;;
+		\?) # Unrecognized option
+			echo "Error: Unrecognized option \"$option\" - Try running this command again with \"-h\" to see its usage!"
+			exit;;
+	esac;
+
+done;
+
+# Activate Python virtual environment
+source "./.venv/bin/activate";
+
+# If command is run with the -m option, make and perform migrations
+if [ $DOMIGRATIONS ]; then
+	python3 "./manage.py" makemigrations;
+	python3 "./manage.py" makemigrations cosmos_app;
+	python3 "./manage.py" makemigrations accounts_app;
+	python3 "./manage.py" migrate;
+fi;
+
+# Run the server
+python3 "./manage.py" runserver;
+
+# Deactivate Python virtual environment
+deactivate;
